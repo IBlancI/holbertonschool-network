@@ -1,7 +1,3 @@
-#!/bin/bash
-
-# Display all active IPv4 addresses on the machine
-# Compatible with macOS, using ifconfig and awk
-
-# Use ifconfig to display network interfaces and their IP addresses
-ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}'
+#!/usr/bin/env bash
+#retrieves the IPv4 addresses of the network interfaces
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
